@@ -1,0 +1,21 @@
+.Message {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+}
+
+.Message.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.Message.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3ebcb;
+}
