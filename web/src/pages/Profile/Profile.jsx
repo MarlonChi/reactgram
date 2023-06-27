@@ -6,7 +6,11 @@ import { BsFillEyeFill, BsPencilFill, BsXLg } from "react-icons/bs";
 import { uploads } from "../../utils/config";
 import { Message } from "../../components/Message/Message";
 import { getUserDetails } from "../../slices/userSlice";
-import { publishPhoto, resetMessage } from "../../slices/photoSlice";
+import {
+  publishPhoto,
+  resetMessage,
+  getUserPhotos,
+} from "../../slices/photoSlice";
 
 import "./Profile.css";
 
@@ -33,6 +37,7 @@ export const Profile = () => {
   // load user data
   useEffect(() => {
     dispatch(getUserDetails(id));
+    dispatch(getUserPhotos(id));
   }, [dispatch, id]);
 
   const handleFile = (e) => {
@@ -111,6 +116,30 @@ export const Profile = () => {
           {messagePhoto && <Message message={messagePhoto} type="success" />}
         </>
       )}
+      <div className="user-photos">
+        <h2>Fotos publicadas</h2>
+        <div className="photos-container">
+          {photos &&
+            photos.map((photo) => (
+              <div className="photo" key={photo._id}>
+                {photo.image && (
+                  <img
+                    src={`${uploads}/photos/${photo.image}`}
+                    alt={photo.title}
+                  />
+                )}
+                {id === userAuth.id ? (
+                  <>actions</>
+                ) : (
+                  <Link className="btn" to={`/photos/${photo._id}`}>
+                    Ver
+                  </Link>
+                )}
+              </div>
+            ))}
+          {photos.length === 0 && <p>Ainda não há fotos publicadas</p>}
+        </div>
+      </div>
     </div>
   );
 };
