@@ -10,6 +10,7 @@ import {
   publishPhoto,
   resetMessage,
   getUserPhotos,
+  deletePhoto,
 } from "../../slices/photoSlice";
 
 import "./Profile.css";
@@ -46,6 +47,12 @@ export const Profile = () => {
     setImage(image);
   };
 
+  const resetComponentMessage = () => {
+    setTimeout(() => {
+      dispatch(resetMessage());
+    }, 2000);
+  };
+
   const submitHandle = (e) => {
     e.preventDefault();
 
@@ -67,9 +74,13 @@ export const Profile = () => {
 
     dispatch(publishPhoto(formData));
 
-    setTimeout(() => {
-      dispatch(resetMessage());
-    }, 2000);
+    resetComponentMessage();
+  };
+
+  // delete a photo
+  const handleDelete = (id) => {
+    dispatch(deletePhoto(id));
+    resetComponentMessage();
   };
 
   if (loading) {
@@ -82,7 +93,6 @@ export const Profile = () => {
         {user.profileImage && (
           <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
         )}
-        <img src="https://github.com/MarlonChi.png" alt="marlon_chio" />
         <div className="profile-description">
           <h2>{user.name}</h2>
           <p>{user.bio}</p>
@@ -128,8 +138,14 @@ export const Profile = () => {
                     alt={photo.title}
                   />
                 )}
-                {id === userAuth.id ? (
-                  <>actions</>
+                {id === userAuth._id ? (
+                  <div className="actions">
+                    <Link to={`/photos/${photo._id}`}>
+                      <BsFillEyeFill />
+                    </Link>
+                    <BsPencilFill />
+                    <BsXLg onClick={() => handleDelete(photo._id)} />
+                  </div>
                 ) : (
                   <Link className="btn" to={`/photos/${photo._id}`}>
                     Ver
