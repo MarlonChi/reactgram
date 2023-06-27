@@ -10,6 +10,7 @@ import "./EditProfile.css";
 
 export const EditProfile = () => {
   const dispatch = useDispatch();
+
   const { user, message, error, loading } = useSelector((state) => state.user);
 
   const [name, setName] = useState("");
@@ -24,7 +25,7 @@ export const EditProfile = () => {
     dispatch(profile());
   }, [dispatch]);
 
-  // fill form with user data
+  // fill user form
   useEffect(() => {
     if (user) {
       setName(user.name);
@@ -36,6 +37,7 @@ export const EditProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // gather user data from states
     const userData = {
       name,
     };
@@ -55,23 +57,26 @@ export const EditProfile = () => {
     // build form data
     const formData = new FormData();
 
-    const userFormData = Object.keys(userData).forEach((key) => {
-      formData.append(key, userData[key]);
-    });
+    const userFormData = Object.keys(userData).forEach((key) =>
+      formData.append(key, userData[key])
+    );
 
     formData.append("user", userFormData);
 
-    await dispatch(updateProfile(userFormData));
+    await dispatch(updateProfile(formData));
 
     setTimeout(() => {
-      dispatch(resetMessage());
+      dispatch(resetMessage);
     }, 2000);
   };
 
   const handleFile = (e) => {
     // image preview
     const image = e.target.files[0];
+
     setPreviewImage(image);
+
+    // update image state
     setProfileImage(image);
   };
 
