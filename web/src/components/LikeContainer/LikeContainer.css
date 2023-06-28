@@ -1,0 +1,21 @@
+#LikeContainer {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #363636;
+  border-bottom: 1px solid #363636;
+  margin: 1rem 0;
+  padding: 1rem 0;
+}
+
+#Home #LikeContainer {
+  border: none;
+}
+
+#LikeContainer svg {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+#LikeContainer p {
+  margin-left: 1em;
+}
