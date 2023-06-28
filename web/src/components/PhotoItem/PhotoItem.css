@@ -1,0 +1,18 @@
+#PhotoItem {
+}
+
+#PhotoItem img {
+  width: 100%;
+}
+
+#Home #PhotoItem h2 {
+  margin-bottom: 0.2em;
+}
+
+.photo-author {
+  text-align: left;
+}
+
+.photo-author a {
+  font-weight: bold;
+}
