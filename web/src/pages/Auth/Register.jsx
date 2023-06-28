@@ -64,8 +64,8 @@ export const Register = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword || ""}
         />
-        {!loading && <input type="submit" placeholder="Cadastrar" />}
-        {loading && <input type="submit" placeholder="Aguarde..." disabled />}
+        {!loading && <input type="submit" value="Cadastrar" />}
+        {loading && <input type="submit" value="Aguarde..." disabled />}
         {error && <Message message={error} type="error" />}
       </form>
       <p>

@@ -48,8 +48,8 @@ export const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password || ""}
         />
-        {!loading && <input type="submit" placeholder="Entrar" />}
-        {loading && <input type="submit" placeholder="Aguarde..." disabled />}
+        {!loading && <input type="submit" value="Entrar" />}
+        {loading && <input type="submit" value="Aguarde..." disabled />}
         {error && <Message message={error} type="error" />}
       </form>
       <p>

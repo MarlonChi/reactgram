@@ -132,8 +132,8 @@ export const EditProfile = () => {
             value={password || ""}
           />
         </label>
-        {!loading && <input type="submit" placeholder="Atualizar" />}
-        {loading && <input type="submit" placeholder="Aguarde..." disabled />}
+        {!loading && <input type="submit" value="Atualizar" />}
+        {loading && <input type="submit" value="Aguarde..." disabled />}
         {error && <Message message={error} type="error" />}
         {message && <Message message={message} type="success" />}
       </form>
