@@ -8,6 +8,7 @@ import { Register } from "./pages/Auth/Register";
 import { EditProfile } from "./pages/EditProfile/EditProfile";
 import { Profile } from "./pages/Profile/Profile";
 import { Photo } from "./pages/Photo/Photo";
+import { Search } from "./pages/Search/Search";
 
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
@@ -44,6 +45,10 @@ function App() {
             <Route
               path="/register"
               element={!auth ? <Register /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/search"
+              element={auth ? <Search /> : <Navigate to="/login" />}
             />
             <Route
               path="/photos/:id"

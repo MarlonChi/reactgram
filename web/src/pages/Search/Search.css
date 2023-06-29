@@ -1,0 +1,16 @@
+#Search {
+  width: 33%;
+  margin: 0 auto;
+  padding-top: 2em;
+}
+
+#Search h2 {
+  text-align: center;
+}
+
+#Search a {
+  display: block;
+  max-width: 8rem;
+  text-align: center;
+  margin: 0.5em 0 2em 0;
+}
